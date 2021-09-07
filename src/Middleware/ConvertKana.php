@@ -54,7 +54,8 @@ class ConvertKana extends TransformsRequest
             return $value;
         }
 
-        return is_string($value) ? mb_convert_kana($value, 'KVas') : $value;
+        $option = config('japanese.convert.kana.option', 'KVas');
+        return is_string($value) ? mb_convert_kana($value, $option) : $value;
     }
 
     /**
