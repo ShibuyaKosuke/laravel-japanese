@@ -16,21 +16,26 @@ class ServiceProvider extends ServiceBase
      */
     public function boot(): void
     {
-        /** @var Router $router */
-        $router = $this->app['router'];
-
-        $convertKana = (file_exists($this->app->path('Http/Middleware/ConvertKana.php'))) ?
-            ConvertKana::class :
-            ConvertKanaBase::class;
-
-        $router->aliasMiddleware('convert.kana', $convertKana);
-
         $this->app->bind('shibuyakosuke.laravel.japanese', function (Application $app) {
             $config = $app['config'];
             return new Japanese($config);
         });
 
+        $this->middleware();
         $this->publishFiles();
+    }
+
+    protected function middleware()
+    {
+        /** @var Router $router */
+        $router = $this->app['router'];
+
+        $convertKana = file_exists($this->app->path('Http/Middleware/ConvertKana.php')) ?
+            ConvertKana::class :
+            ConvertKanaBase::class;
+
+        $router->aliasMiddleware('convert.kana', $convertKana);
+        $router->pushMiddlewareToGroup('web', $convertKana);
     }
 
     protected function publishFiles()

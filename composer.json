@@ -20,5 +20,10 @@
       ]
     }
   },
-  "require": {}
+  "require": {
+    "azuyalabs/yasumi": "^2.4"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
 }
