@@ -9,7 +9,7 @@ class Japanese
     /**
      * @var Repository
      */
-    private Repository $config;
+    protected Repository $config;
 
     /**
      * @param Repository $config
