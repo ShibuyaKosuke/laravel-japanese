@@ -2,20 +2,20 @@
 
 namespace ShibuyaKosuke\LaravelJapanesePackage;
 
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Config\Repository;
 
 class Japanese
 {
     /**
-     * @var Application
+     * @var Repository
      */
-    private Application $app;
+    private Repository $config;
 
     /**
-     * @param Application $app
+     * @param Repository $config
      */
-    public function __construct(Application $app)
+    public function __construct(Repository $config)
     {
-        $this->app = $app;
+        $this->config = $config->get('japanese');
     }
 }

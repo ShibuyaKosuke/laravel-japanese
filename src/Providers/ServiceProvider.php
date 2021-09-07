@@ -23,7 +23,8 @@ class ServiceProvider extends ServiceBase
         $router->pushMiddlewareToGroup('web', ConvertKana::class);
 
         $this->app->bind('shibuyakosuke.laravel.japanese', function (Application $app) {
-            return new Japanese($app);
+            $config = $app['config'];
+            return new Japanese($config);
         });
     }
 
