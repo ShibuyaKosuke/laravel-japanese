@@ -1,0 +1,24 @@
+{
+  "name": "shibuyakosuke/laravel-japanese",
+  "description": "Japanese package for laravel",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ShibuyaKosuke\\LaravelJapanesePackage\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "ShibuyaKosuke",
+      "email": "github@shibuyakosuke.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ShibuyaKosuke\\LaravelJapanesePackage\\Providers\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {}
+}
