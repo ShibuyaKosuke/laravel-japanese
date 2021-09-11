@@ -4,6 +4,7 @@ namespace ShibuyaKosuke\LaravelJapanesePackage\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
+use Illuminate\Http\Request;
 
 class ConvertKana extends TransformsRequest
 {
@@ -26,7 +27,7 @@ class ConvertKana extends TransformsRequest
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param \Closure $next
      * @return mixed
      */

@@ -6,11 +6,19 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Hiragana implements Rule
 {
+    /**
+     * @param string $attribute
+     * @param mixed $value
+     * @return bool|int
+     */
     public function passes($attribute, $value)
     {
-        return preg_match('/\A[ぁ-んー]+\z/u', $value);
+        return preg_match('/\A[ぁ-んーゝゞ]+\z/u', $value);
     }
 
+    /**
+     * @return string
+     */
     public function message()
     {
         return ':attribute はひらがなでなければなりません。';
