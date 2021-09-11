@@ -43,7 +43,7 @@ class HiraganaTest extends TestCase
      * @param mixed $value
      * @param bool $result
      */
-    public function passes(mixed $value, bool $result)
+    public function passes($value, bool $result)
     {
         self::assertEquals($result, $this->rule->passes($value, $value));
     }
