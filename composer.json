@@ -18,7 +18,10 @@
     "laravel": {
       "providers": [
         "ShibuyaKosuke\\LaravelJapanesePackage\\Providers\\ServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "Japanese": "ShibuyaKosuke\\LaravelJapanesePackage\\Facades\\Japanese"
+      }
     }
   },
   "require": {

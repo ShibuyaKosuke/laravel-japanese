@@ -5,6 +5,7 @@ namespace ShibuyaKosuke\LaravelJapanesePackage\Middleware;
 use Closure;
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
 use Illuminate\Http\Request;
+use ShibuyaKosuke\LaravelJapanesePackage\Facades\Japanese;
 
 class ConvertKana extends TransformsRequest
 {
@@ -54,9 +55,7 @@ class ConvertKana extends TransformsRequest
         if (in_array($key, $this->except, true)) {
             return $value;
         }
-
-        $option = config('japanese.convert.kana.option', 'KVas');
-        return is_string($value) ? mb_convert_kana($value, $option) : $value;
+        return Japanese::convertKana($value);
     }
 
     /**

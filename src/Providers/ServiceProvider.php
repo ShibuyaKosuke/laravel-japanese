@@ -6,7 +6,7 @@ use App\Http\Middleware\ConvertKana;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider as ServiceBase;
-use Shibuyakosuke\LaravelJapanesePackage\Japanese;
+use ShibuyaKosuke\LaravelJapanesePackage\Japanese;
 use ShibuyaKosuke\LaravelJapanesePackage\Middleware\ConvertKana as ConvertKanaBase;
 
 class ServiceProvider extends ServiceBase
@@ -28,7 +28,7 @@ class ServiceProvider extends ServiceBase
     /**
      * @return void
      */
-    protected function middleware()
+    protected function middleware(): void
     {
         /** @var Router $router */
         $router = $this->app['router'];
@@ -37,13 +37,16 @@ class ServiceProvider extends ServiceBase
         $convertKana = file_exists($path) ? ConvertKana::class : ConvertKanaBase::class;
 
         $router->aliasMiddleware('convert.kana', $convertKana);
-        $router->pushMiddlewareToGroup('web', $convertKana);
+
+        if ($this->app['config']->get('japanese.convert.enabled')) {
+            $router->pushMiddlewareToGroup('web', $convertKana);
+        }
     }
 
     /**
      * @return void
      */
-    protected function publishFiles()
+    protected function publishFiles(): void
     {
         $this->publishes([
             __DIR__ . '/../../config/japanese.php' => $this->app->configPath('japanese.php'),
