@@ -25,6 +25,9 @@ class ServiceProvider extends ServiceBase
         $this->publishFiles();
     }
 
+    /**
+     * @return void
+     */
     protected function middleware()
     {
         /** @var Router $router */
@@ -38,6 +41,9 @@ class ServiceProvider extends ServiceBase
         $router->pushMiddlewareToGroup('web', $convertKana);
     }
 
+    /**
+     * @return void
+     */
     protected function publishFiles()
     {
         $this->publishes([
