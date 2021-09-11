@@ -28,6 +28,16 @@ class ServiceProvider extends ServiceBase
     /**
      * @return void
      */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/japanese.php', 'japanese'
+        );
+    }
+
+    /**
+     * @return void
+     */
     protected function middleware(): void
     {
         /** @var Router $router */
