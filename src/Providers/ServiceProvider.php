@@ -33,9 +33,8 @@ class ServiceProvider extends ServiceBase
         /** @var Router $router */
         $router = $this->app['router'];
 
-        $convertKana = file_exists($this->app->path('Http/Middleware/ConvertKana.php')) ?
-            ConvertKana::class :
-            ConvertKanaBase::class;
+        $path = $this->app->path('Http/Middleware/ConvertKana.php');
+        $convertKana = file_exists($path) ? ConvertKana::class : ConvertKanaBase::class;
 
         $router->aliasMiddleware('convert.kana', $convertKana);
         $router->pushMiddlewareToGroup('web', $convertKana);
