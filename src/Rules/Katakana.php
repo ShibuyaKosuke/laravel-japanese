@@ -13,7 +13,7 @@ class Katakana implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/\A[ァ-ヶー]+\z/u', $value);
+        return preg_match('/\A[ァ-ヶーゝゞ]+\z/u', $value);
     }
 
     /**
