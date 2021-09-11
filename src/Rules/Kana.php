@@ -13,7 +13,7 @@ class Kana implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/\A[ぁ-んァ-ヶー]+\z/u', $value);
+        return preg_match('/\A[ぁ-んァ-ヶーゝゞ]+\z/u', $value);
     }
 
     /**

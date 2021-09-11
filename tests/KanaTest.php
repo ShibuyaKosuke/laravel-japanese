@@ -3,9 +3,10 @@
 namespace ShibuyaKosuke\LaravelJapanesePackage\Test;
 
 use ShibuyaKosuke\LaravelJapanesePackage\Rules\Hiragana;
+use ShibuyaKosuke\LaravelJapanesePackage\Rules\Kana;
 use ShibuyaKosuke\LaravelJapanesePackage\Rules\Katakana;
 
-class KatakanaTest extends TestCase
+class KanaTest extends TestCase
 {
     /**
      * @var
@@ -14,20 +15,20 @@ class KatakanaTest extends TestCase
 
     public function setUp(): void
     {
-        $this->rule = new Katakana();
+        $this->rule = new Kana();
     }
 
     public function testValues()
     {
         $values = [
-            ['アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨワヲン', true],
-            ['ガギグゲゴザジズゼゾダヂヅデド', true],
-            ['パピプペポ', true],
-            ['ァィゥェォャュョヴヰ', true],
-            ['スゝキ', true],
-            ['イスゞ', true],
+            ['あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨワヲン', true],
+            ['がぎぐげござじずぜぞだぢづでどガギグゲゴザジズゼゾダヂヅデド', true],
+            ['ぱぴぷぺぽパピプペポ', true],
+            ['ぃぇぉぁぃゑゐいーんァィゥェォャュョヴヰ', true],
+            ['すゝきスゝキ', true],
+            ['いすゞイスゞ', true],
             ['カタカナ', true],
-            ['ひらがな', false],
+            ['ひらがな', true],
             ['アイウエオ日時', false],
             ['ABCDE', false],
             ['1234567890', false],
